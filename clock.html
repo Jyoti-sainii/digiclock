@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital clock</title>
+    <style type="text/css">
+      h1 {
+        font-size: 100px;
+        text-align: center;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      h2 {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        font-size: 90px;
+        /* padding-top: 20px; */
+        /* text-align: center; */
+        font-family: Cambria, Cochin, serif;
+        color: rgb(60, 3, 83);
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgb(190, 113, 238);
+        transform: translateX(-50%) translateY(-40%);
+      }
+    </style>
+  </head>
+  <body onload="showTime()">
+    <h1>
+      [ Digital clock ]
+      <h2></h2>
+    </h1>
+  </body>
+  <script type="text/javascript">
+    function showTime() {
+      var d = new Date();
+      var h = d.getHours();
+      var m = d.getMinutes();
+      var s = d.getSeconds();
+      var session = "PM";
+
+      if (h > 12) {
+        h = h - 12;
+      }
+
+      if (h >= 12) {
+        session = "AM";
+      }
+      h = h < 10 ? "0" + h : h;
+      m = m < 10 ? "0" + m : m;
+      s = s < 10 ? "0" + s : s;
+      var time = h + " : " + m + " : " + s + " " + session;
+      document.getElementsByTagName("h2")[0].innerText = time;
+      setTimeout(showTime, 1000);
+    }
+  </script>
+</html>
